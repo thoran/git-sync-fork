@@ -2,6 +2,14 @@
 
 ## 20260818
 
+0.3.4: + README.md
+
+1. + README.md: what it does, the two ways of calling it, and the two things it assumes. Drawn from the Notes and Usage sections of the script header.
+2. ~ git-syncfork: /0.3.3/0.3.4/
+
+
+## 20260818
+
 0.3.3: A CHANGELOG in the form changelogger writes, and the Changes section retired from the script header.
 
 1. + CHANGELOG: the entries below. 0.3.1's items come from the Changes section of the script header, which is the only version whose items were recorded anywhere. 0.3.0 and 0.2.1 carry their summaries alone, that being all their commit subjects held.

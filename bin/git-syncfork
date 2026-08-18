@@ -2,7 +2,7 @@
 # git-syncfork
 
 # 20260818
-# 0.3.3
+# 0.3.4
 
 # Notes:
 # 1. Assumes that the remote is or will be called 'upstream'.
