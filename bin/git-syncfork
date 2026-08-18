@@ -2,7 +2,7 @@
 # git-syncfork
 
 # 20260818
-# 0.3.2
+# 0.3.3
 
 # Notes:
 # 1. Assumes that the remote is or will be called 'upstream'.
@@ -16,15 +16,6 @@
 # 2. If the upstream remote called upstream does exist, then run git-syncfork without arguments:
 #  `git syncfork`
 #   It will sync with upstream.
-
-# Changes since 0.2:
-# 1. + default_branch()
-# 2. ~ main(), so as to make use of default_branch().
-# 3. - require 'Kernel/run', since it just isn't really being used.
-# 4. ~ main(), so as to remove use of Kernel.run.
-# 1: Using default_branch in the rebase
-# 5. ~ main(), so that the rebase command uses the default branch
-# 6. ~ default_branch() to use Git::Branch.default
 
 gem 'git.rb'
 

@@ -1,0 +1,38 @@
+# CHANGELOG
+
+## 20260818
+
+0.3.3: A CHANGELOG in the form changelogger writes, and the Changes section retired from the script header.
+
+1. + CHANGELOG: the entries below. 0.3.1's items come from the Changes section of the script header, which is the only version whose items were recorded anywhere. 0.3.0 and 0.2.1 carry their summaries alone, that being all their commit subjects held.
+2. ~ bin/git-syncfork: - the Changes section from the header, the CHANGELOG holding it now. Same treatment as chromedriver-install 0.6.0.
+3. The versions before 0.2.1 are not here. They predate the git-importall import, which brought the working tree in three commits saying only that.
+4. ~ git-syncfork: /0.3.2/0.3.3/
+
+
+## 20260818
+
+0.3.2: Populate .gitignore.
+
+1. ~ .gitignore: the whole set for Ruby, being gem and build products, Bundler, RDoc, YARD, editor files, Ruby version managers, test artefacts and .claude. git-boot's root commit made the file and left it empty.
+2. ~ git-syncfork: /0.3.1/0.3.2/
+
+
+## 20210730
+
+0.3.1: Using default_branch in the rebase.
+
+1. + default_branch()
+2. ~ main(), so as to make use of default_branch().
+3. - require 'Kernel/run', since it just isn't really being used.
+4. ~ main(), so as to remove use of Kernel.run.
+
+
+## 20201022
+
+0.3.0: + default_branch()
+
+
+## 20201022
+
+0.2.1: Better handling of missing args.
