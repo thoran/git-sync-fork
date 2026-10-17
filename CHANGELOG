@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 20261018
+
+0.3.5: Check out the default branch, its name having gone uninterpolated in single quotes.
+
+1. ~ main(): double quotes around the checkout, the shell having read the uninterpolated #{default_branch} as a comment and run a bare git checkout. Off the default branch, the rebase and push then acted on whichever branch was checked out.
+2. + on_default_branch?(), in place of sending a predicate built from the branch name to Git::Branch.current.
+3. ~ git-syncfork: /0.3.4/0.3.5/
+
+
 ## 20260818
 
 0.3.4: + README.md

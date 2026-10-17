@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 # git-syncfork
 
-# 20260818
-# 0.3.4
+# 20261018
+# 0.3.5
 
 # Notes:
 # 1. Assumes that the remote is or will be called 'upstream'.
@@ -48,11 +48,15 @@ def default_branch
   @default_branch ||= Git::Branch.default
 end
 
+def on_default_branch?
+  Git::Branch.current.name == default_branch
+end
+
 def main
   maybe_create_upstream_remote
   system('git fetch upstream')
-  unless Git::Branch.current.send("#{default_branch}?")
-    system('git checkout #{default_branch}')
+  unless on_default_branch?
+    system("git checkout #{default_branch}")
   end
   system("git rebase upstream/#{default_branch}")
   system('git push')
