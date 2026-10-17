@@ -2,7 +2,7 @@
 # git-syncfork
 
 # 20261018
-# 0.3.5
+# 0.4.0
 
 # Notes:
 # 1. Assumes that the remote is or will be called 'upstream'.
@@ -39,7 +39,7 @@ def maybe_create_upstream_remote
       puts "There is no remote called upstream and one could not be created."
       puts "Run `git syncfork` again with the upstream Github owner and repo like so:"
       puts "", "`git syncfork owner/repo`", ""
-      exit
+      exit 1
     end
   end
 end
@@ -52,15 +52,21 @@ def on_default_branch?
   Git::Branch.current.name == default_branch
 end
 
+def run!(command)
+  system(command) || exit(1)
+end
+
 def main
   maybe_create_upstream_remote
-  system('git fetch upstream')
-  unless on_default_branch?
-    system("git checkout #{default_branch}")
-  end
-  system("git rebase upstream/#{default_branch}")
-  system('git push')
-  system('git push --tags')
+  run!('git fetch upstream')
+  run!("git checkout #{default_branch}") unless on_default_branch?
+  system("git merge --ff-only upstream/#{default_branch}") || abort(<<~MESSAGE)
+    If #{default_branch} has commits of its own, move them to a branch and put #{default_branch} back:
+      git branch <new-branch>
+      git reset --hard upstream/#{default_branch}
+  MESSAGE
+  run!('git push')
+  run!('git push --tags')
 end
 
 main

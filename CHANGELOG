@@ -2,6 +2,19 @@
 
 ## 20261018
 
+0.4.0: Fast-forward only, stopping at the first command to fail.
+
+1. ~ main(): git merge --ff-only in place of git rebase. The fork's default branch is a copy of the upstream's, which a rebase would rewrite and a push then be refused.
+2. + run!(), which exits at the first command to fail, so that nothing is pushed after a fetch, checkout or merge has failed.
+3. ~ main(), so as to make use of run!().
+4. ~ maybe_create_upstream_remote(): exit 1 rather than 0 when no remote could be created.
+5. ~ README.md: fast-forwarding, not rebasing, and stopping where it cannot.
+6. ~ main(): where it cannot fast-forward, abort with how to move the default branch's own commits to a branch and put it back.
+7. ~ git-syncfork: /0.3.5/0.4.0/
+
+
+## 20261018
+
 0.3.5: Check out the default branch, its name having gone uninterpolated in single quotes.
 
 1. ~ main(): double quotes around the checkout, the shell having read the uninterpolated #{default_branch} as a comment and run a bare git checkout. Off the default branch, the rebase and push then acted on whichever branch was checked out.

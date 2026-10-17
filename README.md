@@ -18,7 +18,7 @@ Where `upstream` already exists, no argument is wanted:
 git syncfork
 ```
 
-It syncs with whatever `upstream` points at, rebasing onto that repository's default branch.
+It syncs with whatever `upstream` points at, fast-forwarding the default branch to that repository's and pushing it, with any tags, to `origin`. Where the fork's default branch has commits of its own, it cannot fast-forward, and it stops without pushing.
 
 ## Assumptions
 
