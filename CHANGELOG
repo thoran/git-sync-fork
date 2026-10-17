@@ -2,6 +2,18 @@
 
 ## 20261018
 
+0.5.0: The upstream is taken to be on origin's host, unless a full URL is given.
+
+1. + upstream_argument(), full_url?(), owner_and_repo?(), upstream_argument_usable?(), origin_url(), origin_url_sans_owner_and_repo(), git_suffix(), upstream_url()
+2. - upstream_owner(), upstream_repo()
+3. ~ maybe_create_upstream_remote(), so as to make use of upstream_url(), which puts an owner and repo on origin's host and in its form, where it had been put on GitHub over SSH, and takes a full URL as it is.
+4. ~ maybe_create_upstream_remote(): an owner without a repo is refused, where it had been taken as both.
+5. ~ the Notes and Usage in the header, and README.md: origin's host in place of GitHub's, and a full URL as the alternative.
+6. ~ git-syncfork: /0.4.0/0.5.0/
+
+
+## 20261018
+
 0.4.0: Fast-forward only, stopping at the first command to fail.
 
 1. ~ main(): git merge --ff-only in place of git rebase. The fork's default branch is a copy of the upstream's, which a rebase would rewrite and a push then be refused.

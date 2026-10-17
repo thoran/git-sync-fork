@@ -2,16 +2,17 @@
 # git-syncfork
 
 # 20261018
-# 0.4.0
+# 0.5.0
 
 # Notes:
 # 1. Assumes that the remote is or will be called 'upstream'.
-# 2. Assumes that the upstream is hosted on Github.
+# 2. Assumes that the upstream is on the same host as origin, unless a full URL is given.
 # 3. Pinched some of maybe_create_upstream_remote() from a very similar program I wrote earlier this year called git-spoon.
 
 # Usage:
-# 1. If the upstream remote called upstream doesn't exist, then run git-syncfork with the following arguments:
+# 1. If the upstream remote called upstream doesn't exist, then run git-syncfork with the upstream's owner and repo, or its full URL:
 #  `git syncfork owner/repo`
+#  `git syncfork git@host:owner/repo.git`
 #   It will create the upstream remote and sync with upstream.
 # 2. If the upstream remote called upstream does exist, then run git-syncfork without arguments:
 #  `git syncfork`
@@ -22,22 +23,49 @@ gem 'git.rb'
 require 'Git/Branch'
 require 'Git/Remote'
 
-def upstream_owner
-  ARGV[0]&.split('/')&.first
+def upstream_argument
+  ARGV[0]
 end
 
-def upstream_repo
-  ARGV[0]&.split('/')&.last
+def full_url?
+  upstream_argument.match?(%r{\A\w+://|\A[^/]+@[^/]+:})
+end
+
+def owner_and_repo?
+  upstream_argument.match?(%r{\A[^/]+/[^/]+\z}) && Git::Remote.exist?('origin')
+end
+
+def upstream_argument_usable?
+  upstream_argument && (full_url? || owner_and_repo?)
+end
+
+def origin_url
+  @origin_url ||= Git::Remote.find('origin').url
+end
+
+def origin_url_sans_owner_and_repo
+  origin_url.delete_suffix(origin_url[%r{[^/:]+/[^/]+\z}])
+end
+
+def git_suffix
+  origin_url.end_with?('.git') ? '.git' : ''
+end
+
+def upstream_url
+  if full_url?
+    upstream_argument
+  else
+    origin_url_sans_owner_and_repo + upstream_argument.delete_suffix('.git') + git_suffix
+  end
 end
 
 def maybe_create_upstream_remote
   unless Git::Remote.exist?('upstream')
-    if upstream_owner && upstream_repo
-      url = "git@github.com:#{upstream_owner}/#{upstream_repo}.git"
-      Git::Remote.add('upstream', url)
+    if upstream_argument_usable?
+      Git::Remote.add('upstream', upstream_url)
     else
       puts "There is no remote called upstream and one could not be created."
-      puts "Run `git syncfork` again with the upstream Github owner and repo like so:"
+      puts "Run `git syncfork` again with the upstream's owner and repo, or its full URL, like so:"
       puts "", "`git syncfork owner/repo`", ""
       exit 1
     end
