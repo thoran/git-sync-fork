@@ -2,6 +2,14 @@
 
 ## 20261018
 
+0.6.1: ~ README.md: + When to use it.
+
+1. ~ README.md: + When to use it, being a fork which is a copy of one main repository, with git-spoon named for taking in work from peers.
+2. ~ git-sync-fork: /0.6.0/0.6.1/
+
+
+## 20261018
+
 0.6.0: Rename from git-syncfork.
 
 1. /git-syncfork/git-sync-fork/, hyphenated like the other git- programs, git-import-all among them.

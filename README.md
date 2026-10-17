@@ -25,3 +25,9 @@ It syncs with whatever `upstream` points at, fast-forwarding the default branch 
 
 - The remote is, or will be, called `upstream`.
 - The upstream is on the same host as `origin`, unless a full URL is given.
+
+## When to use it
+
+For a fork which is a copy of one main repository: its default branch is meant to match the upstream's, and keeping it current is all there is to do. It fast-forwards only, a copy being something that should never gain merges or have its history rewritten. Where it cannot fast-forward, the fork has diverged, and it stops to say so rather than pushing.
+
+For taking in work from peers, where there is no main repository and each repository is of equal standing, use `git-spoon`, which merges and never pushes.
