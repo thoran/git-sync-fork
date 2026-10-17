@@ -2,6 +2,15 @@
 
 ## 20261018
 
+0.6.0: Rename from git-syncfork.
+
+1. /git-syncfork/git-sync-fork/, hyphenated like the other git- programs, git-import-all among them.
+2. ~ the header, the usage messages and README.md: /git syncfork/git sync-fork/
+3. ~ git-sync-fork: /0.5.0/0.6.0/
+
+
+## 20261018
+
 0.5.0: The upstream is taken to be on origin's host, unless a full URL is given.
 
 1. + upstream_argument(), full_url?(), owner_and_repo?(), upstream_argument_usable?(), origin_url(), origin_url_sans_owner_and_repo(), git_suffix(), upstream_url()

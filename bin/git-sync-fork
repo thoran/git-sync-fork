@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
-# git-syncfork
+# git-sync-fork
 
 # 20261018
-# 0.5.0
+# 0.6.0
 
 # Notes:
 # 1. Assumes that the remote is or will be called 'upstream'.
@@ -10,12 +10,12 @@
 # 3. Pinched some of maybe_create_upstream_remote() from a very similar program I wrote earlier this year called git-spoon.
 
 # Usage:
-# 1. If the upstream remote called upstream doesn't exist, then run git-syncfork with the upstream's owner and repo, or its full URL:
-#  `git syncfork owner/repo`
-#  `git syncfork git@host:owner/repo.git`
+# 1. If the upstream remote called upstream doesn't exist, then run git-sync-fork with the upstream's owner and repo, or its full URL:
+#  `git sync-fork owner/repo`
+#  `git sync-fork git@host:owner/repo.git`
 #   It will create the upstream remote and sync with upstream.
-# 2. If the upstream remote called upstream does exist, then run git-syncfork without arguments:
-#  `git syncfork`
+# 2. If the upstream remote called upstream does exist, then run git-sync-fork without arguments:
+#  `git sync-fork`
 #   It will sync with upstream.
 
 gem 'git.rb'
@@ -65,8 +65,8 @@ def maybe_create_upstream_remote
       Git::Remote.add('upstream', upstream_url)
     else
       puts "There is no remote called upstream and one could not be created."
-      puts "Run `git syncfork` again with the upstream's owner and repo, or its full URL, like so:"
-      puts "", "`git syncfork owner/repo`", ""
+      puts "Run `git sync-fork` again with the upstream's owner and repo, or its full URL, like so:"
+      puts "", "`git sync-fork owner/repo`", ""
       exit 1
     end
   end
