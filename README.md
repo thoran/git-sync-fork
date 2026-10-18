@@ -2,6 +2,13 @@
 
 Sync a fork with the repository it was forked from.
 
+## Installation
+
+```shell
+$ brew tap thoran/tap
+$ brew install git-sync-fork
+```
+
 ## Usage
 
 Where the `upstream` remote does not exist yet, name the repository to fork from, either by its owner and repo on the same host as `origin`, or by its full URL:
@@ -31,3 +38,16 @@ It syncs with whatever `upstream` points at, fast-forwarding the default branch 
 For a fork which is a copy of one main repository: its default branch is meant to match the upstream's, and keeping it current is all there is to do. It fast-forwards only, a copy being something that should never gain merges or have its history rewritten. Where it cannot fast-forward, the fork has diverged, and it stops to say so rather than pushing.
 
 For taking in work from peers, where there is no main repository and each repository is of equal standing, use `git-spoon`, which merges and never pushes.
+
+## Contributing
+
+1. Fork it: `https://github.com/thoran/git-sync-fork/fork`
+2. Create your feature branch: `git checkout -b my-new-feature`
+3. Commit your changes: `git commit -am 'Add some feature'`
+4. Push to the branch: `git push origin my-new-feature`
+5. Create a new pull request
+
+
+## License
+
+MIT

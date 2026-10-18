@@ -2,7 +2,7 @@
 # git-sync-fork
 
 # 20261018
-# 0.6.1
+# 0.6.2
 
 # Notes:
 # 1. Assumes that the remote is or will be called 'upstream'.

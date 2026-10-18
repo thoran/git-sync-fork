@@ -2,6 +2,15 @@
 
 ## 20261018
 
+0.6.2: + LICENSE, and the README sections for installing, contributing and the licence.
+
+1. + LICENSE: the MIT text, copyright 2020-2026 thoran. The year is that of the first commit.
+2. ~ README.md: + Installation, from thoran/tap; + Contributing; + License, saying MIT.
+3. ~ git-sync-fork: /0.6.1/0.6.2/
+
+
+## 20261018
+
 0.6.1: ~ README.md: + When to use it.
 
 1. ~ README.md: + When to use it, being a fork which is a copy of one main repository, with git-spoon named for taking in work from peers.
